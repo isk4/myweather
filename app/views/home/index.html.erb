@@ -1,13 +1,30 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-2 d-flex flex-column position-fixed bg-dark">
+
             <h2 class="text-light">myWeather</h2>
             <h3 class="text-light">Add city</h3>
-            <form action="" id="city-selector">
-                <select name="cities" id="cities"></select>
+
+            <form action="" id="add-city">
+
+                <select name="new-cities" id="new-cities" required>
+                    <option value="" disabled selected>Add a new city</option>
+                </select>
+                
+                <button type="submit">Add</button>
+            </form>
+
+            <form action="" id="show-city">
+                <select name="my-cities" id="my-cities">
+                    <option value="" disabled selected>Select a city</option>
+                </select>
+
+                <button type="submit">Show weather</button>
             </form>
         </div>
+
         <div class="col-10">
+        
         </div>
     </div>
 </div>

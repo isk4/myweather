@@ -6265,13 +6265,54 @@ const data = [
 const d = document;
 d.addEventListener("DOMContentLoaded", () => {
 
-    let citySelector = d.querySelector("#cities");
+    let citySelector = d.querySelector("#new-cities");
 
     data.forEach(city => {
         let option = d.createElement("option");
         option.value = city.Key;
         option.textContent = city.EnglishName;
         citySelector.appendChild(option);
+    });
+
+    let form = d.querySelector("#add-city");
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+
+        let select = d.querySelector("#new-cities");
+        let cityName = select.options[select.selectedIndex].text;
+        let key = select.value;
+        let csrfToken = d.querySelector("meta[name='csrf-token']").content;
+
+        let requestBody = {
+            city : {
+                name: cityName,
+                key: key
+            }
+        };
+
+        fetch("/cities",
+            {
+                method: "POST",
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Transaction': 'POST',
+                    'X-CSRF-Token': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .catch(error => console.log(error.message));
+    });
+
+    let myCities = d.querySelector("#my-cities");
+    fetch("/cities",
+        {
+            headers: {'Content-Type': 'application/json'}
+        }
+    ).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
     });
 
 });
