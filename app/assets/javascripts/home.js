@@ -1,4 +1,4 @@
-const data = [
+const top100 = [
     {
         "Version": 1,
         "Key": "28143",
@@ -6267,7 +6267,7 @@ d.addEventListener("DOMContentLoaded", () => {
 
     let citySelector = d.querySelector("#new-cities");
 
-    data.forEach(city => {
+    top100.forEach(city => {
         let option = d.createElement("option");
         option.value = city.Key;
         option.textContent = city.EnglishName;
