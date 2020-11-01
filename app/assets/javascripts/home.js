@@ -6299,20 +6299,24 @@ d.addEventListener("DOMContentLoaded", () => {
                     'X-Transaction': 'POST',
                     'X-CSRF-Token': csrfToken
                 }
-            })
-            .then(response => response.json())
-            .catch(error => console.log(error.message));
+            });
     });
 
-    let myCities = d.querySelector("#my-cities");
     fetch("/cities",
-        {
-            headers: {'Content-Type': 'application/json'}
-        }
+    {
+        headers: {'Content-Type': 'application/json'}
+    }
     ).then(response => {
         return response.json();
     }).then(data => {
-        console.log(data);
+        let myCities = d.querySelector("#my-cities");
+
+        data.forEach(city => {
+            let option = d.createElement("option");
+            option.value = city.key;
+            option.textContent = city.name;
+            myCities.appendChild(option);
+        });
     });
 
 });
