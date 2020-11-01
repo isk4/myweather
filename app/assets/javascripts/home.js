@@ -6526,14 +6526,36 @@ d.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let dataLabel = [];
-    let temperatureData = [];
+    let dataLabels = [];
+    let temperaturesData = [];
     let colors = [];
 
     forecast.DailyForecasts.forEach(day => {
-        dataLabel.push(day.Date.slice(0, 10));
-        temperatureData.push(Math.round(day.Temperature.Maximum.Value));
+        dataLabels.push(day.Date.slice(0, 10));
+        temperaturesData.push(Math.round(day.Temperature.Maximum.Value));
         colors.push(getColor(day.Day.IconPhrase.toLowerCase()));
+    });
+
+    let canvas = d.querySelector("#forecast-chart").getContext('2d');
+    let chart = new Chart(canvas, {
+        type: "bar",
+        data: {
+            labels: dataLabels,
+            datasets: [{
+                label: "°C",
+                data: temperaturesData,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
 
 });
