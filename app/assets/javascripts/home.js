@@ -6262,6 +6262,177 @@ const top100 = [
     }
 ]
 
+const forecast = {
+    "Headline": {
+      "EffectiveDate": "2020-11-01T14:00:00-03:00",
+      "EffectiveEpochDate": 1604250000,
+      "Severity": 4,
+      "Text": "Air quality will be unhealthy for sensitive groups this afternoon through late Tuesday night",
+      "Category": "air quality",
+      "EndDate": "2020-11-04T08:00:00-03:00",
+      "EndEpochDate": 1604487600,
+      "MobileLink": "http://m.accuweather.com/en/cl/santiago/60449/extended-weather-forecast/60449?unit=c&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?unit=c&lang=en-us"
+    },
+    "DailyForecasts": [
+      {
+        "Date": "2020-11-01T07:00:00-03:00",
+        "EpochDate": 1604224800,
+        "Temperature": {
+          "Minimum": {
+            "Value": 9.4,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 26.1,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 1,
+          "IconPhrase": "Sunny",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 37,
+          "IconPhrase": "Hazy moonlight",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=1&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=1&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2020-11-02T07:00:00-03:00",
+        "EpochDate": 1604311200,
+        "Temperature": {
+          "Minimum": {
+            "Value": 11.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 29.4,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 5,
+          "IconPhrase": "Hazy sunshine",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 37,
+          "IconPhrase": "Hazy moonlight",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=2&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=2&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2020-11-03T07:00:00-03:00",
+        "EpochDate": 1604397600,
+        "Temperature": {
+          "Minimum": {
+            "Value": 11.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 30.6,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 5,
+          "IconPhrase": "Hazy sunshine",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 37,
+          "IconPhrase": "Hazy moonlight",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=3&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=3&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2020-11-04T07:00:00-03:00",
+        "EpochDate": 1604484000,
+        "Temperature": {
+          "Minimum": {
+            "Value": 10.5,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 27.4,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 4,
+          "IconPhrase": "Intermittent clouds",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 35,
+          "IconPhrase": "Partly cloudy",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=4&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=4&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2020-11-05T07:00:00-03:00",
+        "EpochDate": 1604570400,
+        "Temperature": {
+          "Minimum": {
+            "Value": 11.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 28.5,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 2,
+          "IconPhrase": "Mostly sunny",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 33,
+          "IconPhrase": "Clear",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=5&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/cl/santiago/60449/daily-weather-forecast/60449?day=5&unit=c&lang=en-us"
+      }
+    ]
+}
+
 const d = document;
 d.addEventListener("DOMContentLoaded", () => {
 
@@ -6317,6 +6488,52 @@ d.addEventListener("DOMContentLoaded", () => {
             option.textContent = city.name;
             myCities.appendChild(option);
         });
+    });
+
+    // CHART CREATION
+
+    const sunny = ["sunny", "mostly sunny", "partly sunny", "intermittent clouds", "hazy sunshine"];
+    const cloudy = ["mostly cloudy", "cloudy", "dreary", "fog"];
+    const rainy = [
+        "showers",
+        "mostly cloudy w/ showers", 
+        "partly sunny w/ showers", 
+        "t-storms", 
+        "mostly cloudy w/ t-storms", 
+        "partly sunny w/ t-storms",
+        "rain"
+    ];
+    const snowy = [
+        "flurries",
+        "partly sunny w/ flurries",
+        "snow",
+        "mostly cloudy w/ snow",
+        "ice",
+        "sleet",
+        "freezing rain",
+        "rain and snow"
+    ]
+
+    const getColor = weather => {
+        if (sunny.includes(weather)) {
+            return "#faff20";
+        } else if (cloudy.includes(weather)) {
+            return "#c5c9d2";
+        } else if (snowy.includes(weather)) {
+            return "#80e2f7";
+        } else {
+            return "#000000";
+        }
+    }
+
+    let dataLabel = [];
+    let temperatureData = [];
+    let colors = [];
+
+    forecast.DailyForecasts.forEach(day => {
+        dataLabel.push(day.Date.slice(0, 10));
+        temperatureData.push(Math.round(day.Temperature.Maximum.Value));
+        colors.push(getColor(day.Day.IconPhrase.toLowerCase()));
     });
 
 });
