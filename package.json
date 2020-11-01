@@ -1,5 +1,7 @@
 {
   "name": "myweather",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.5.3"
+  }
 }
