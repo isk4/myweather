@@ -6436,17 +6436,19 @@ const forecast = {
 const d = document;
 d.addEventListener("DOMContentLoaded", () => {
 
-    let citySelector = d.querySelector("#new-cities");
+    // ADD NEW CITY
+
+    let newCitySelector = d.querySelector("#new-cities");
 
     top100.forEach(city => {
         let option = d.createElement("option");
         option.value = city.Key;
         option.textContent = city.EnglishName;
-        citySelector.appendChild(option);
+        newCitySelector.appendChild(option);
     });
 
-    let form = d.querySelector("#add-city");
-    form.addEventListener("submit", e => {
+    let addForm = d.querySelector("#add-city");
+    addForm.addEventListener("submit", e => {
         e.preventDefault();
 
         let select = d.querySelector("#new-cities");
@@ -6490,7 +6492,9 @@ d.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // CHART CREATION
+    
+    
+    // CREATE CHART
 
     const sunny = ["sunny", "mostly sunny", "partly sunny", "intermittent clouds", "hazy sunshine"];
     const cloudy = ["mostly cloudy", "cloudy", "dreary", "fog"];
@@ -6498,7 +6502,8 @@ d.addEventListener("DOMContentLoaded", () => {
         "showers",
         "mostly cloudy w/ showers", 
         "partly sunny w/ showers", 
-        "t-storms", 
+        "t-storms",
+        "thunderstorms", 
         "mostly cloudy w/ t-storms", 
         "partly sunny w/ t-storms",
         "rain"
@@ -6514,11 +6519,13 @@ d.addEventListener("DOMContentLoaded", () => {
         "rain and snow"
     ]
 
-    const getColor = weather => {
+    function getColor (weather) {
         if (sunny.includes(weather)) {
             return "#ff643d";
         } else if (cloudy.includes(weather)) {
             return "#bebebe";
+        } else if (rainy.includes(weather)) {
+            return "#316087";
         } else if (snowy.includes(weather)) {
             return "#8ec9d2";
         } else {
@@ -6526,39 +6533,69 @@ d.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let dataLabels = [];
-    let temperaturesData = [];
-    let colors = [];
+    
+    function createChart(forecast) {
+        let dataLabels = [];
+        let temperaturesData = [];
+        let colors = [];
 
-    forecast.DailyForecasts.forEach(day => {
-        dataLabels.push(day.Date.slice(0, 10));
-        temperaturesData.push(Math.round(day.Temperature.Maximum.Value));
-        colors.push(getColor(day.Day.IconPhrase.toLowerCase()));
-    });
+        forecast.DailyForecasts.forEach(day => {
+            dataLabels.push(day.Date.slice(0, 10));
+            temperaturesData.push(Math.round(day.Temperature.Maximum.Value));
+            colors.push(getColor(day.Day.IconPhrase.toLowerCase()));
+        });
 
-    let canvas = d.querySelector("#forecast-chart").getContext('2d');
-    Chart.defaults.global.defaultFontStyle = "bold";
-    let chart = new Chart(canvas, {
-        type: "bar",
-        data: {
-            labels: dataLabels,
-            datasets: [{
-                label: "°C",
-                data: temperaturesData,
-                backgroundColor: colors,
-                borderColor: "#bfcdc4",
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        let canvas = d.querySelector("#forecast-chart").getContext('2d');
+        Chart.defaults.global.defaultFontStyle = "bold";
+        let chart = new Chart(canvas, {
+            type: "bar",
+            data: {
+                labels: dataLabels,
+                datasets: [{
+                    label: "°C",
+                    data: temperaturesData,
+                    backgroundColor: colors,
+                    borderColor: "#bfcdc4",
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
+        });
+    }
+
+    // SHOW FORECAST
+    
+    let forecastForm = d.querySelector("#show-city");
+    let myCitySelector = d.querySelector("#my-cities");
+    
+    
+    forecastForm.addEventListener("submit", e => {
+        e.preventDefault();
+        
+        let cityKey = myCitySelector.value;
+        let url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=48pXLShCjgeEAGQQBAXJhUPxXp6bGELV&metric=true`
+    
+        fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(data => {
+            console.log(data);
+            createChart(data);
+        }).catch(error => {
+            console.log(error.message);
+        })
     });
 
 });
