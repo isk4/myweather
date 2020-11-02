@@ -6471,8 +6471,10 @@ d.addEventListener("DOMContentLoaded", () => {
                     'Content-Type': 'application/json',
                     'X-Transaction': 'POST',
                     'X-CSRF-Token': csrfToken
-                }
-            });
+            }
+        });
+        
+        addForm.reset();
     });
 
     fetch("/cities",
@@ -6596,6 +6598,8 @@ d.addEventListener("DOMContentLoaded", () => {
         }).catch(error => {
             console.log(error.message);
         })
+
+        forecastForm.reset();
     });
 
 });
