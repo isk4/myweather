@@ -6436,6 +6436,37 @@ const forecast = {
 const d = document;
 d.addEventListener("DOMContentLoaded", () => {
 
+    // GET AND MOUNT OWN CITIES
+
+    function mountOwnCities() {
+        fetch("/cities",
+        {
+            headers: {'Content-Type': 'application/json'}
+        }
+        ).then(response => {
+            return response.json();
+        }).then(data => {
+            let myCities = d.querySelector("#my-cities");
+            myCities.innerHTML = "";
+
+            let def = d.createElement("option");
+            def.value = "";
+            def.disabled = true;
+            def.selected = true;
+            def.text = "Select a city"
+            myCities.appendChild(def);
+    
+            data.forEach(city => {
+                let option = d.createElement("option");
+                option.value = city.key;
+                option.textContent = city.name;
+                myCities.appendChild(option);
+            });
+        });
+    }
+
+    mountOwnCities();
+
     // ADD NEW CITY
 
     let newCitySelector = d.querySelector("#new-cities");
@@ -6472,28 +6503,12 @@ d.addEventListener("DOMContentLoaded", () => {
                     'X-Transaction': 'POST',
                     'X-CSRF-Token': csrfToken
             }
+        }).then(response => {
+            mountOwnCities();
         });
         
         addForm.reset();
     });
-
-    fetch("/cities",
-    {
-        headers: {'Content-Type': 'application/json'}
-    }
-    ).then(response => {
-        return response.json();
-    }).then(data => {
-        let myCities = d.querySelector("#my-cities");
-
-        data.forEach(city => {
-            let option = d.createElement("option");
-            option.value = city.key;
-            option.textContent = city.name;
-            myCities.appendChild(option);
-        });
-    });
-
     
     
     // CREATE CHART
