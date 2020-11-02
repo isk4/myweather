@@ -93,6 +93,8 @@ d.addEventListener("DOMContentLoaded", () => {
     
     // CREATE CHART
 
+    Chart.defaults.global.defaultFontStyle = "bold";
+
     const sunny = ["sunny", "mostly sunny", "partly sunny", "intermittent clouds", "hazy sunshine"];
     const cloudy = ["mostly cloudy", "cloudy", "dreary", "fog"];
     const rainy = [
@@ -130,6 +132,10 @@ d.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // function makeChart() {
+        
+    // }
+
     
     function createChart(forecast) {
         let dataLabels = [];
@@ -142,8 +148,12 @@ d.addEventListener("DOMContentLoaded", () => {
             colors.push(getColor(day.Day.IconPhrase.toLowerCase()));
         });
 
-        let canvas = d.querySelector("#forecast-chart").getContext('2d');
-        Chart.defaults.global.defaultFontStyle = "bold";
+        let canvasDiv = d.querySelector("#canvas-div");
+        canvasDiv.innerHTML = "";
+
+        let canvas = d.createElement("canvas");
+        canvasDiv.appendChild(canvas);
+
         let chart = new Chart(canvas, {
             type: "bar",
             data: {
@@ -166,6 +176,8 @@ d.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+
+        chart = null;
     }
 
     // SHOW FORECAST
@@ -193,8 +205,6 @@ d.addEventListener("DOMContentLoaded", () => {
         }).catch(error => {
             console.log(error.message);
         })
-
-        forecastForm.reset();
     });
 
 });

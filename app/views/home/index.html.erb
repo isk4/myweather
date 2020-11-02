@@ -23,7 +23,7 @@
                 <p class="text-light lead my-3">Show 5-day forecast</p>
                 
                 <div class="input-group">
-                    <select class="custom-select" name="my-cities" id="my-cities"></select>
+                    <select class="custom-select" name="my-cities" id="my-cities" required></select>
                     <div class="input-group-append">
                         <button class="btn btn-info" type="submit">Show weather</button>
                     </div>
@@ -33,9 +33,7 @@
         </div>
 
         <div class="container col-9 offset-3">
-            <div class="position-relative p-5">
-                <canvas id="forecast-chart"></canvas>
-            </div>
+            <div class="position-relative p-5" id="canvas-div"></div>
         </div>
     </div>
 </div>
