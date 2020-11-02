@@ -6516,11 +6516,11 @@ d.addEventListener("DOMContentLoaded", () => {
 
     const getColor = weather => {
         if (sunny.includes(weather)) {
-            return "#faff20";
+            return "#ff643d";
         } else if (cloudy.includes(weather)) {
-            return "#c5c9d2";
+            return "#bebebe";
         } else if (snowy.includes(weather)) {
-            return "#80e2f7";
+            return "#8ec9d2";
         } else {
             return "#000000";
         }
@@ -6537,6 +6537,7 @@ d.addEventListener("DOMContentLoaded", () => {
     });
 
     let canvas = d.querySelector("#forecast-chart").getContext('2d');
+    Chart.defaults.global.defaultFontStyle = "bold";
     let chart = new Chart(canvas, {
         type: "bar",
         data: {
@@ -6544,7 +6545,9 @@ d.addEventListener("DOMContentLoaded", () => {
             datasets: [{
                 label: "°C",
                 data: temperaturesData,
-                backgroundColor: colors
+                backgroundColor: colors,
+                borderColor: "#bfcdc4",
+                borderWidth: 1
             }]
         },
         options: {
