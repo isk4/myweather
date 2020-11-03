@@ -8,9 +8,9 @@ class CitiesController < ApplicationController
         @city = City.new(city_params)
 
         if @city.save
-            redirect_to root_path, notice: "New city added."
+            render json: @city, status: :ok
         else
-            redirect_to root_path, notice: "There was an error saving this city."
+            render json: @city, status: :not_acceptable
         end
     end
 

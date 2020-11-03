@@ -84,7 +84,13 @@ d.addEventListener("DOMContentLoaded", () => {
                 }
             }
         ).then(response => {
-            mountOwnCities();
+            if (response.ok) {
+                mountOwnCities();
+            } else {
+                alert("You've already saved that city.");
+            }
+        }).catch(error => {
+            console.log(error)
         });
         
         addForm.reset();
