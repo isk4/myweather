@@ -3,7 +3,7 @@ const d = document;
 d.addEventListener("DOMContentLoaded", () => {
 
     // GET AND MOUNT NEW CITIES LIST
-    fetch("http://dataservice.accuweather.com/locations/v1/topcities/150?apikey=48pXLShCjgeEAGQQBAXJhUPxXp6bGELV")
+    fetch(`http://dataservice.accuweather.com/locations/v1/topcities/150?apikey=${gon.key}`)
     .then(response => {
         if (response.ok) {
             return response.json();
@@ -18,8 +18,7 @@ d.addEventListener("DOMContentLoaded", () => {
         option.value = city.Key;
         option.textContent = city.EnglishName;
         newCitySelector.appendChild(option);
-    });
-        
+        })    
     }).catch(error => {
         console.log(error.message);
     });
@@ -191,7 +190,7 @@ d.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         
         let cityKey = myCitySelector.value;
-        let url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=48pXLShCjgeEAGQQBAXJhUPxXp6bGELV&metric=true`
+        let url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${gon.key}&metric=true`
     
         fetch(url)
         .then(response => {
