@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 d-flex flex-column position-fixed bg-dark vh-100">
+        <div class="col-3 px-4 d-flex flex-column position-fixed bg-dark vh-100">
 
             <h2 class="text-light my-3 mx-2"><u>[myWeather]</u></h2>
 
-            <form class="my-3" action="" id="add-city">
-                <p class="text-light lead my-3">Add city</p>
+            <form class="my-5 p-3 border border-light rounded-right" action="" id="add-city">
+                <p class="text-light lead">Add cities</p>
 
                 <div class="input-group">
                     <select class="custom-select" name="new-cities" id="new-cities" required>
@@ -19,13 +19,13 @@
             </form>
 
 
-            <form class="my-3" id="show-city">
-                <p class="text-light lead my-3">Show 5-day forecast</p>
+            <form class="mt-3 p-3 border border-light rounded-right" id="show-city">
+                <p class="text-light lead">My saved cities</p>
                 
                 <div class="input-group">
                     <select class="custom-select" name="my-cities" id="my-cities" required></select>
                     <div class="input-group-append">
-                        <button class="btn btn-info" type="submit">Show weather</button>
+                        <button class="btn btn-info" type="submit">Show forecast!</button>
                     </div>
                 </div>
 
@@ -33,7 +33,14 @@
         </div>
 
         <div class="container col-9 offset-3">
-            <div class="position-relative p-5" id="canvas-div"></div>
+            <div class="position-relative rounded p-5" id="canvas-div">
+                <div class="jumbotron">
+                    <h1 class="display-4">Welcome!</h1>
+                    <p class="lead">Go to the "Add cities" section to save a city from  the "AccuWeather's Top 150 Cities" list in your collection.</p>
+                    <hr class="my-4">
+                    <p class="lead">Next, pick a city from "My saved cities" and click "Show forecast!" to get a chart with the selected city's next 5 days weather forecast.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
