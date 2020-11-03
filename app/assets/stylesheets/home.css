@@ -1,0 +1,23 @@
+#sunny {
+    background-color: #ff643d;
+    height: 15px;
+    width: 35px;
+}
+
+#cloudy {
+    background-color: #bebebe;
+    height: 15px;
+    width: 35px;
+}
+
+#rainy {
+    background-color: #316087;
+    height: 15px;
+    width: 35px;
+}
+
+#snowy {
+    background-color: #8ec9d2;
+    height: 15px;
+    width: 35px;
+}
