@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row vh-100">
         <div class="col-3 px-4 d-flex flex-column position-fixed bg-dark vh-100">
 
             <h2 class="text-light my-3 mx-2"><u>[myWeather]</u></h2>
@@ -32,42 +32,52 @@
             </form>
         </div>
 
-        <div class="container col-9 offset-3">
+        <div class="container d-flex flex-column col-9 offset-3 content">
 
-            <div class="position-relative rounded p-5" id="canvas-div">
-                <div class="jumbotron">
-                    <h1 class="display-4">Welcome!</h1>
-                    <p class="lead">Go to the "Add cities" section to save a city from  the "AccuWeather's Top 150 Cities" list in your collection.</p>
-                    <hr class="my-4">
-                    <p class="lead">Next, pick a city from "My saved cities" and click "Show forecast!" to get a chart with the selected city's next 5 days weather forecast.</p>
+            <div>
+                <div id="wind-direction" class="w-100 mt-3 d-flex flex-row-reverse align-items-center"> 
+                    <span id="wind-speed" class="mx-2 p-0"></span>
+                    <div id="direction-icon" class="mx-2"></div>
+                    <div id="wind-icon" class="mx-2"></div>
                 </div>
+
+                <div class="position-relative rounded p-5" id="canvas-div">
+                    <div class="jumbotron">
+                        <h1 class="display-4">Welcome!</h1>
+                        <p class="lead">Go to the "Add cities" section to save a city from  the "AccuWeather's Top 150 Cities" list in your collection.</p>
+                        <hr class="my-4">
+                        <p class="lead">Next, pick a city from "My saved cities" and click "Show forecast!" to get a chart with the selected city's next 5 days weather forecast.</p>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-baseline">
+
+                    <p class="lead">Legend: </p>
+
+                    <div class="d-flex align-items-baseline mx-2">
+                        <p class="mx-2">Sunny</p>
+                        <div id="sunny"></div>
+                    </div>
+
+                    <div class="d-flex align-items-baseline mx-2">
+                        <p class="mx-2">Cloudy</p>
+                        <div id="cloudy"></div>
+                    </div>
+
+                    <div class="d-flex align-items-baseline mx-2">
+                        <p class="mx-2">Rainy</p>
+                        <div id="rainy"></div>
+                    </div>
+
+                    <div class="d-flex align-items-baseline mx-2">
+                        <p class="mx-2">Snowy</p>
+                        <div id="snowy">
+                    </div>
+                    
+                </div>
+
             </div>
 
-            <div class="d-flex justify-content-center align-items-baseline">
-
-                <p class="lead">Legend: </p>
-
-                <div class="d-flex align-items-baseline mx-2">
-                    <p class="mx-2">Sunny</p>
-                    <div id="sunny"></div>
-                </div>
-
-                <div class="d-flex align-items-baseline mx-2">
-                    <p class="mx-2">Cloudy</p>
-                    <div id="cloudy"></div>
-                </div>
-
-                <div class="d-flex align-items-baseline mx-2">
-                    <p class="mx-2">Rainy</p>
-                    <div id="rainy"></div>
-                </div>
-
-                <div class="d-flex align-items-baseline mx-2">
-                    <p class="mx-2">Snowy</p>
-                    <div id="snowy">
-                </div>
-                
-            </div>
         </div>
     </div>
 </div>

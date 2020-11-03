@@ -137,11 +137,6 @@ d.addEventListener("DOMContentLoaded", () => {
             return "#000000";
         }
     }
-
-    // function makeChart() {
-        
-    // }
-
     
     function createChart(forecast) {
         let dataLabels = [];
@@ -186,6 +181,27 @@ d.addEventListener("DOMContentLoaded", () => {
         chart = null;
     }
 
+
+    // SET WIND
+
+    function setWind(direction, speed) {
+        let directionDiv = d.querySelector("#direction-icon");
+        let speedText = d.querySelector("#wind-speed");
+
+        if (direction == "N") {
+            directionDiv.className = "north";
+        } else if (direction == "E") {
+            directionDiv.className = "east";
+        } else if (direction == "S") {
+            directionDiv.className = "south";
+        } else {
+            directionDiv.className = "west";            
+        }
+
+        speedText.textContent = speed + " km/h";
+    }
+
+
     // SHOW FORECAST
     
     let forecastForm = d.querySelector("#show-city");
@@ -206,11 +222,28 @@ d.addEventListener("DOMContentLoaded", () => {
                 return Promise.reject(response);
             }
         }).then(data => {
-            console.log(data);
             createChart(data);
         }).catch(error => {
             console.log(error.message);
         })
+
+
+        fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${gon.key}&details=true`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(data => {
+            let windDirection = data[0].Wind.Direction.English;
+            let windSpeed = data[0].Wind.Speed.Metric.Value;
+
+            setWind(windDirection, windSpeed);
+        }).catch(error => {
+            console.log(error.message);
+        })
+
     });
 
 });
