@@ -82,8 +82,9 @@ d.addEventListener("DOMContentLoaded", () => {
                     'Content-Type': 'application/json',
                     'X-Transaction': 'POST',
                     'X-CSRF-Token': csrfToken
+                }
             }
-        }).then(response => {
+        ).then(response => {
             mountOwnCities();
         });
         
