@@ -5,10 +5,10 @@
             <h2 class="text-light my-3 mx-2"><u>[myWeather]</u></h2>
 
             <form class="my-5 p-3 border border-light rounded-right" action="" id="add-city">
-                <p class="text-light lead">Add cities</p>
+                <p class="text-light lead">Add city</p>
 
                 <div class="input-group">
-                    <select class="custom-select" name="new-cities" id="new-cities" required>
+                    <select class="custom-select" name="new-city" id="new-city" required>
                         <option value="" disabled selected>Select a city</option>
                     </select>
                     <div class="input-group-append">
@@ -38,15 +38,16 @@
                 <div id="wind-direction" class="w-100 mt-3 d-flex flex-row-reverse align-items-center"> 
                     <span id="wind-speed" class="mx-2 p-0"></span>
                     <div id="direction-icon" class="mx-2"></div>
+                    <span id="direction-text" class="mx-2 p-0 lead"></span>
                     <div id="wind-icon" class="mx-2"></div>
                 </div>
 
                 <div class="position-relative rounded p-5" id="canvas-div">
                     <div class="jumbotron">
                         <h1 class="display-4">Welcome!</h1>
-                        <p class="lead">Go to the "Add cities" section to save a city from  the "AccuWeather's Top 150 Cities" list in your collection.</p>
+                        <p class="lead">Go to the "Add city" section to save a city from  the "AccuWeather's Top 150 Cities" list in your collection.</p>
                         <hr class="my-4">
-                        <p class="lead">Next, pick a city from "My saved cities" and click "Show forecast!" to get a chart with the selected city's next 5 days weather forecast.</p>
+                        <p class="lead">Next, pick a city from "My saved cities" and click "Show forecast!" to get a chart with the selected city's next 5 days weather forecast and its current wind speed and direction (updates every 1 minute).</p>
                     </div>
                 </div>
 

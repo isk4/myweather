@@ -11,7 +11,7 @@ d.addEventListener("DOMContentLoaded", () => {
             return Promise.reject(response);
         }
     }).then(data => {
-        let newCitySelector = d.querySelector("#new-cities");
+        let newCitySelector = d.querySelector("#new-city");
 
         data.forEach(city => {
         let option = d.createElement("option");
@@ -61,7 +61,7 @@ d.addEventListener("DOMContentLoaded", () => {
     addForm.addEventListener("submit", e => {
         e.preventDefault();
 
-        let select = d.querySelector("#new-cities");
+        let select = d.querySelector("#new-city");
         let cityName = select.options[select.selectedIndex].text;
         let key = select.value;
         let csrfToken = d.querySelector("meta[name='csrf-token']").content;
@@ -182,23 +182,61 @@ d.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // SET WIND
+    // SET WIND FRONT
 
     function setWind(direction, speed) {
         let directionDiv = d.querySelector("#direction-icon");
         let speedText = d.querySelector("#wind-speed");
+        let directionText = d.querySelector("#direction-text");
 
-        if (direction == "N") {
+        if (direction === "N") {
             directionDiv.className = "north";
-        } else if (direction == "E") {
+        } else if (direction === "E") {
             directionDiv.className = "east";
-        } else if (direction == "S") {
+        } else if (direction === "S") {
             directionDiv.className = "south";
-        } else {
+        } else if (direction === "W") {
             directionDiv.className = "west";            
+        } else {
+            let substring = direction.slice(1, 3);
+            if (substring === "NE") {
+                directionDiv.className = "north-east";
+            } else if (substring === "SE") {
+                directionDiv.className = "south-east";
+            } else if (substring === "SW") {
+                directionDiv.className = "south-west";
+            } else {
+                directionDiv.className = "north-west";
+            }
         }
 
+        directionText.textContent = direction;
         speedText.textContent = speed + " km/h";
+    }
+
+
+    // GET AND MOUNT WIND INFO
+
+    function mountWindInfo() {
+
+        let cityKey = myCitySelector.value;
+
+        fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${gon.key}&details=true`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(data => {
+            let windDirection = data[0].Wind.Direction.English;
+            let windSpeed = data[0].Wind.Speed.Metric.Value;
+            console.log("Updating wind info...");
+
+            setWind(windDirection, windSpeed);
+        }).catch(error => {
+            console.log(error.message);
+        });
     }
 
 
@@ -206,10 +244,13 @@ d.addEventListener("DOMContentLoaded", () => {
     
     let forecastForm = d.querySelector("#show-city");
     let myCitySelector = d.querySelector("#my-cities");
-    
+
+    let windUpdateInterval;
     
     forecastForm.addEventListener("submit", e => {
         e.preventDefault();
+
+        clearInterval(windUpdateInterval);
         
         let cityKey = myCitySelector.value;
         let url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${gon.key}&metric=true`
@@ -227,22 +268,8 @@ d.addEventListener("DOMContentLoaded", () => {
             console.log(error.message);
         })
 
-
-        fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${gon.key}&details=true`)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                return Promise.reject(response);
-            }
-        }).then(data => {
-            let windDirection = data[0].Wind.Direction.English;
-            let windSpeed = data[0].Wind.Speed.Metric.Value;
-
-            setWind(windDirection, windSpeed);
-        }).catch(error => {
-            console.log(error.message);
-        })
+        mountWindInfo();
+        windUpdateInterval = setInterval(mountWindInfo, 60 * 1000);
 
     });
 
