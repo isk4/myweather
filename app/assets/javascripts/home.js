@@ -3,7 +3,7 @@ const d = document;
 d.addEventListener("DOMContentLoaded", () => {
 
     // GET AND MOUNT NEW CITIES LIST
-    fetch(`http://dataservice.accuweather.com/locations/v1/topcities/150?apikey=${gon.key}`)
+    fetch(`https://dataservice.accuweather.com/locations/v1/topcities/150?apikey=${gon.key}`)
     .then(response => {
         if (response.ok) {
             return response.json();
@@ -224,7 +224,7 @@ d.addEventListener("DOMContentLoaded", () => {
 
         let cityKey = myCitySelector.value;
 
-        fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${gon.key}&details=true`)
+        fetch(`https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${gon.key}&details=true`)
         .then(response => {
             if (response.ok) {
                 return response.json();
