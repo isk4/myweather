@@ -168,6 +168,9 @@ d.addEventListener("DOMContentLoaded", () => {
                 }]
             },
             options: {
+                legend: {
+                    onClick: e => e.stopPropagation()
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -189,26 +192,26 @@ d.addEventListener("DOMContentLoaded", () => {
         let speedText = d.querySelector("#wind-speed");
         let directionText = d.querySelector("#direction-text");
 
-        if (direction === "N") {
-            directionDiv.className = "north";
-        } else if (direction === "E") {
-            directionDiv.className = "east";
-        } else if (direction === "S") {
-            directionDiv.className = "south";
-        } else if (direction === "W") {
-            directionDiv.className = "west";            
-        } else {
-            let substring = direction.slice(1, 3);
-            if (substring === "NE") {
-                directionDiv.className = "north-east";
-            } else if (substring === "SE") {
-                directionDiv.className = "south-east";
-            } else if (substring === "SW") {
-                directionDiv.className = "south-west";
-            } else {
-                directionDiv.className = "north-west";
-            }
+        let options = {
+            "N": "north",
+            "NNE": "north-east",
+            "NE": "north-east",
+            "ENE": "north-east",
+            "E": "east",
+            "ESE": "south-east",
+            "SE": "south-east",
+            "SSE": "south-east",
+            "S": "south",
+            "SSW": "south-west",
+            "SW": "south-west",
+            "WSW": "south-west",
+            "W": "west",
+            "WNW": "north-west",
+            "NW": "north-west",
+            "NNW": "north-west"
         }
+
+        directionDiv.className = options[direction];
 
         directionText.textContent = direction;
         speedText.textContent = speed + " km/h";
