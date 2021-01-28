@@ -1,24 +1,12 @@
-# README
+# myWeather
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicación que se conecta a la API de AccuWeather y permite consultar el pronóstico del tiempo
+representado con gráficos de alguna de las ciudades del top 100 más populares de la plataforma.
 
-Things you may want to cover:
+También muestra el tipo de nubosidad para el día y la dirección del viento en tiempo real. _(Se actualiza cada un minuto)_
 
-* Ruby version
+¡Agrega una ciudad al listado y prueba!
 
-* System dependencies
+[Link al proyecto](https://tranquil-wildwood-87606.herokuapp.com/)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+_La aplicación puede fallar de vez en cuando ya que funciona con la versión gratuita de la API de AccuWeather, la cual tiene un límite diario de consultas._
